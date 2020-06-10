@@ -37,6 +37,8 @@ public class webSecurity extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, SecurityConstant.SIGN_UP_URL)
                 .permitAll()
+                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/wenjars/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated().and()
                 .addFilter(getAuthicationUrl()) // login authentication

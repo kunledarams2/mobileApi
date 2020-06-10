@@ -18,6 +18,10 @@ import com.kunledarams.mobilewsapi.ui.model.response.OperationName;
 import com.kunledarams.mobilewsapi.ui.model.response.OperationStatus;
 import com.kunledarams.mobilewsapi.ui.model.response.OperationStatusModel;
 import com.kunledarams.mobilewsapi.ui.model.response.UserResponse;
+
+import io.swagger.annotations.Api;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 import java.lang.reflect.Type;
 
 import java.util.ArrayList;
@@ -34,6 +38,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,7 +48,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("customer")
-
+@Api(description = "Set of endpoints for Creating, Retrieving, Updating and Deleting of Persons.")
 public class UserController {
 
     @Autowired
@@ -52,6 +57,7 @@ public class UserController {
     @Autowired
     AddressService addressService;
 //    ModelMapper modelMapper = new ModelMapper();
+    
     @GetMapping(path = "/{id}")
     public UserResponse getUser(@PathVariable String id) {
 
@@ -60,8 +66,9 @@ public class UserController {
         BeanUtils.copyProperties(userDto, returnValue);
         return returnValue;
     }
-
-    @PostMapping
+   
+    
+    @RequestMapping(value = "createUser", method = RequestMethod.POST)
     public UserResponse createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception {
 
         UserResponse returnValue = new UserResponse();

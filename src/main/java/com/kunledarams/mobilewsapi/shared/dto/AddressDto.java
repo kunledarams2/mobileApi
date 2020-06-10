@@ -17,7 +17,7 @@ public class AddressDto {
     private String streetName;
     private String postalCode;
     private String type;
-    private  UserDto userDetails;
+    private UserDto userDetails;
 
     public long getId() {
         return id;

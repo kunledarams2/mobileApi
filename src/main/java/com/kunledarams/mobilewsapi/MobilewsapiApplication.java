@@ -9,7 +9,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.kunledarams.mobilewsapi.security.AppProperties;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
+@EnableSwagger2
 public class MobilewsapiApplication {
 
     @PostConstruct
